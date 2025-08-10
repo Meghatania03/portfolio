@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: #080324;
+    color: white;
+}
+
+#header{
+    width: 100%;
+    height: 100vh;
+    background: #080324;
+    background-size: cover;
+    background-position: center;
+}
+.container{
+    padding: 20px 8%;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.portfolio-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #ccadea;
+    letter-spacing: 2px;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+nav ul li a {
+    color: #ded9e4; /* or any shade of purple you prefer */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+nav ul li a:hover {
+    color: #a259f7; /* or any shade of purple you prefer */
+    text-decoration: underline; /* optional: adds an underline on hover*/
+}
+
+/*----------about section-----------*/
+#about{
+    padding: 120px 0;
+    color: #ababab;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.about-col-1{
+    flex-basis: 30%;
+    max-width: 400px;
+    align-self: flex-start;
+    margin-left: 0;
+}
+.about-col-1 img{
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+    border-radius: 10%;
+    display: block;
+    padding-left: 0;
+     /* pushes image more to the left */
+}
+.about-col-2 {
+    flex-basis: 57%;
+    max-width: 600px;
+}
+.about_me{
+    font-size: 2.0rem;
+    font-weight: bold;
+    color: whitesmoke;
+    margin-bottom: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.about-col-2 p{
+    line-height: 1.2;
+    font-size: .9rem;
+    color: #ababab;
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.tab-titles {
+    display: flex;
+    margin-top: 20px 0 40px;
+
+}
+.tab-links{
+    margin-right: 50px;
+    font-size: 1.2rem;
+    font-weight: 1000;
+    cursor: pointer;
+    position: relative;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+.tab-links:hover {
+    color: #a259f7; /* or any shade of purple you prefer */
+    
+}
+.tab-contents ul li{
+    margin: 5px 0;
+    font-size: small;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.tab-contents ul li span{
+    font-weight: bold;
+    color: #a259f7; /* or any shade of purple you prefer */
+}
+.tab-contents {
+    display: none;
+}
+.tab-links.active-link { color: #a259f7; /* or your highlight color */ 
+    font-weight: bold;
+}
+.tab-contents.active-tab {
+    display: block;
+}
