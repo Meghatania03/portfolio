@@ -117,7 +117,7 @@ nav ul li a:hover {
 }
 .tab-contents ul li span{
     font-weight: bold;
-    color: #a259f7; /* or any shade of purple you prefer */
+    color: #ff004f; /* or any shade of purple you prefer */
 }
 .tab-contents {
     display: none;
@@ -128,3 +128,197 @@ nav ul li a:hover {
 .tab-contents.active-tab {
     display: block;
 }
+/*----------services section-----------*/
+/* Services Section */
+#services {
+    padding: 30px 0;
+    color: #e1d8d8;
+    
+}
+.sub-tittle {
+    font-size: 2.0rem;
+    font-weight: bold;
+    color: #fdfbff;
+    margin-bottom: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px; /* spacing between items */
+    margin-top: 50px;
+}
+.services-list div {
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    border-radius: 10px;
+    font-weight: 300;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.services-list div h2 {
+    font-size: 1.5rem;
+    color: #e7dddd ;/* or any shade of purple you prefer */
+    margin-bottom: 10px;
+    font-weight: 300;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.services-list div p {
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.services-list div a {
+    color: #c2bdc7; /* or any shade of purple you prefer */
+    text-decoration: none;
+    font-weight: 500;
+}
+.services-list div:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #ff004f; /* Darker background on hover */
+
+}
+
+/*----------portfolio section-----------*/
+#portfolio {
+    padding: 50px 0;
+    color: #e1d8d8;
+}
+.work-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px; /* spacing between items */
+    margin-top: 50px;
+}
+.work{
+    border-radius: 10px;
+    position: relative;
+    width: 300px; /* fixed width */
+    height: 200px; /* fixed height */
+    overflow: hidden;
+}
+
+.work img {
+    width: 300px;        /* fixed width */
+    height: 200px;       /* fixed height */
+    object-fit: cover;
+    
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.3s;
+}
+.layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5),#ff004f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 40px;
+    overflow: hidden;
+    transition: height 0.3s;
+    opacity: 0;
+    z-index: 2;
+    
+}
+.layer h3 {
+    font-size: 1.5rem;
+    color: #e7dddd; /* or any shade of purple you prefer */
+    margin-bottom: 20px;
+    font-weight: 300;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.layer p {
+    color: #c2bdc7; /* or any shade of purple you prefer */
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.layer a {
+    background: #c2bdc7; /* or any shade of purple you prefer */
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 60px;
+    color: #ff004f; /* Darker background on hover */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+}
+.work:hover img {
+    transform: scale(1.1);
+
+}
+.work:hover .layer {
+    opacity: 1;
+
+}
+
+/*----------contact section-----------*/
+.contact-left {
+    flex-basis: 35%;
+    max-width: 500px;
+}
+.contact-right {
+    flex-basis: 60%;
+    max-width: 500px;
+}
+.contact-left p{
+    font-size: 1.1rem;
+    color: #ababab;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.contact-left h2 {
+    font-size: 2.0rem;
+    font-weight: bold;
+    color: #fdfbff;
+    margin-bottom: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.contact-left p i{
+    color: #ff004f; /* or any shade of purple you prefer */
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.contact-right form {
+   width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 0;
+    border-radius: 5px;
+    background: #262626;
+    color: #e1d8d8;
+    font-size: 16px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+form .btn{
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    background: #ff004f; /* or any shade of purple you prefer */
+    color: #e1d8d8;
+    border-radius: 5%;
+}
+
+
+
+
+
