@@ -4,6 +4,9 @@
     font-family: 'poppins', sans-serif;
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     background: #080324;
     color: white;
@@ -317,6 +320,79 @@ form .btn{
     color: #e1d8d8;
     border-radius: 5%;
 }
+
+.login-form {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background: #2e2c2c;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #e1d8d8;
+}
+
+
+
+/* -------- Admin Panel Styles -------- */
+.admin-section {
+    padding: 50px 8%;
+    color: #e1d8d8;
+}
+
+.admin-section h1, .admin-section h2 {
+    color: #ccadea;
+}
+
+.table-container {
+    background: #262626;
+    padding: 20px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table-container table, th, td {
+    border: 1px solid #fff;
+}
+
+.table-container th, .table-container td {
+    padding: 10px;
+    text-align: left;
+}
+
+input[type=text] {
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #2e2c2c;
+    color: #e1d8d8;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #ff004f;
+    color: #e1d8d8;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #a259f7;
+}
+
+form.inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 
 
 
