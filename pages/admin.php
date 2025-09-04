@@ -1,10 +1,12 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['admin'])){
+
+if (!isset($_SESSION['admin'])) {
     header("Location: login.php");
     exit;
 }
+
 
 $conn = mysqli_connect("localhost:3307", "root", "", "portfolio_db");
 if(!$conn){ die("Connection failed: ".mysqli_connect_error()); }
@@ -22,8 +24,20 @@ if(isset($_POST['action'])){
     }
 
     if($action == "Delete"){
-        $id = $_POST['id'];
+        $id = intval($_POST['id']);
         $sql = "DELETE FROM $table WHERE id=$id";
+        mysqli_query($conn, $sql);
+    }
+
+    if($action == "Update"){
+        $id = intval($_POST['id']);
+        $updates = [];
+        foreach($_POST['data'] as $col => $val){
+            $val = mysqli_real_escape_string($conn, $val);
+            $updates[] = "$col='$val'";
+        }
+        $updates_str = implode(",", $updates);
+        $sql = "UPDATE $table SET $updates_str WHERE id=$id";
         mysqli_query($conn, $sql);
     }
 }
@@ -45,44 +59,65 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
 </head>
 <body>
 <div class="container admin-section">
+     <a href="index.php" class='btn'>Back to Home</a>
+     <br><br>
+
     <h1>Admin Panel</h1>
     <p>Manage Skills, Experiences, Education, Services & Projects</p>
 
     <?php
-    function display_section($data,$table_name,$columns){
-        echo "<div class='table-container'>";
-        echo "<h2>".ucfirst($table_name)."</h2>";
-        echo "<table><tr>";
-        foreach($columns as $col){ echo "<th>$col</th>"; }
-        echo "<th>Action</th></tr>";
+   function display_section($data,$table_name,$columns){
+    echo "<div class='table-container'>";
+    echo "<h2>".ucfirst($table_name)."</h2>";
+    echo "<table><tr>";
+    foreach($columns as $col){ echo "<th>$col</th>"; }
+    echo "<th>Action</th></tr>";
 
-        while($row = mysqli_fetch_assoc($data)){
-            echo "<tr>";
-            foreach($columns as $col){ echo "<td>".$row[$col]."</td>"; }
-            echo "<td>
-            <form method='POST' class='inline'>
+    while($row = mysqli_fetch_assoc($data)){
+        echo "<tr>
+              <form method='POST' class='inline'>";
+
+        echo "<input type='hidden' name='table' value='$table_name'>";
+        echo "<input type='hidden' name='id' value='".$row['id']."'>";
+
+        foreach($columns as $col){
+            if($col == 'id'){
+                echo "<td>".$row[$col]."</td>"; // id not editable
+            } else {
+                // Editable inputs in each cell
+                echo "<td><input type='text' name='data[$col]' value='".$row[$col]."' required></td>";
+            }
+        }
+
+        // Action column: Update + Delete
+        echo "<td>
+                <button type='submit' name='action' value='Update'>Update</button>
+              </form>
+
+              <form method='POST' class='inline'>
                 <input type='hidden' name='table' value='$table_name'>
                 <input type='hidden' name='id' value='".$row['id']."'>
                 <input type='hidden' name='action' value='Delete'>
                 <button type='submit'>Delete</button>
-            </form>
+              </form>
             </td>";
-            echo "</tr>";
-        }
-        echo "</table>";
 
-        // Insert form
-        echo "<form method='POST' class='inline'>";
-        echo "<input type='hidden' name='table' value='$table_name'>";
-        echo "<input type='hidden' name='action' value='Insert'>";
-        foreach($columns as $col){
-            if($col != 'id'){ 
-                echo "<input type='text' name='data[$col]' placeholder='$col' required>";
-            }
-        }
-        echo "<button type='submit'>Add</button>";
-        echo "</form></div>";
+        echo "</tr>";
     }
+    echo "</table>";
+
+    // Insert form
+    echo "<form method='POST' class='inline'>";
+    echo "<input type='hidden' name='table' value='$table_name'>";
+    echo "<input type='hidden' name='action' value='Insert'>";
+    foreach($columns as $col){
+        if($col != 'id'){ 
+            echo "<input type='text' name='data[$col]' placeholder='$col' required>";
+        }
+    }
+    echo "<button type='submit'>Add</button>";
+    echo "</form></div>";
+}
 
     display_section($skills,"skills",["id","skill_name","description"]);
     display_section($experiences,"experiences",["id","job_title","company","duration"]);
@@ -90,6 +125,14 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
     display_section($services,"services",["id","title","icon","description"]);
     display_section($projects,"projects",["id","title","description","image","link"]);
     ?>
+
+    <div class="logout-container">
+    <form method="POST" action="logout.php">
+        <button type="submit">Logout</button>
+    </form>
 </div>
+</div>
+
+
 </body>
 </html>

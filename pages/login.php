@@ -1,5 +1,17 @@
 <?php
+
 session_start();
+
+// If session already exists OR cookie exists, redirect to admin.php
+if (isset($_SESSION['admin'])) {
+    header("Location: admin.php");
+    exit;
+} elseif (!isset($_SESSION['admin']) && isset($_COOKIE['admin_user'])) {
+    $_SESSION['admin'] = $_COOKIE['admin_user'];
+    header("Location: admin.php");
+    exit;
+}
+
 $conn = mysqli_connect("localhost:3307", "root", "", "portfolio_db");
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -14,6 +26,9 @@ if (isset($_POST['login'])) {
 
     if (mysqli_num_rows($result) == 1) {
         $_SESSION['admin'] = $username;
+         if (!empty($_POST['remember'])) {
+            setcookie("admin_user", $username, time() + (86400 * 7), "/"); // 7 days
+        }
         header("Location: admin.php");
         exit;
     } else {
@@ -38,6 +53,7 @@ if (isset($_POST['login'])) {
         <form method="POST">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
+            <label><input type="checkbox" name="remember"> Remember Me</label><br><br>
             <button type="submit" name="login" class="btn">Login</button>
         </form>
        </div>

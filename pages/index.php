@@ -35,7 +35,7 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
                     <li><a href="#services">services</a></li>
                     <li><a href="#portfolio">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="login.php">Login</a></li>
                 </ul>
             </nav>
             <div id="about">
@@ -117,7 +117,7 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
                                     <div class="layer">
                                         <h3><?php echo $row['title']; ?></h3>
                                         <p><?php echo $row['description']; ?></p>
-                                        <a href="<?php echo $row['link']; ?>"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                        <a href="<?php echo $row['link']; ?>" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -147,5 +147,4 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
                 </div>
                 <script src="../js/index.js"></script>
 </body>
-
 </html>

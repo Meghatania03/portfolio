@@ -195,17 +195,28 @@ nav ul li a:hover {
     gap: 40px; /* spacing between items */
     margin-top: 50px;
 }
-.work{
+.work {
     border-radius: 10px;
     position: relative;
-    width: 300px; /* fixed width */
-    height: 200px; /* fixed height */
     overflow: hidden;
+    aspect-ratio: 16 / 9;   /* keeps proportional size (similar to 500x300) */
+    width: 100%;            /* responsive: takes grid column width */
+    height: 300px;           /* let height adjust automatically */
+
+}
+.work img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.3s;
 }
 
+
 .work img {
-    width: 300px;        /* fixed width */
-    height: 200px;       /* fixed height */
+    width: 100%;        /* fixed width */
+    height: 100%;       /* fixed height */
     object-fit: cover;
     
     border-radius: 10px;
@@ -231,23 +242,24 @@ nav ul li a:hover {
     
 }
 .layer h3 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: #e7dddd; /* or any shade of purple you prefer */
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-weight: 300;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .layer p {
     color: #c2bdc7; /* or any shade of purple you prefer */
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
 }
 .layer a {
     background: #c2bdc7; /* or any shade of purple you prefer */
     text-decoration: none;
     font-weight: 500;
-    margin-top: 20px;
-    font-size: 18px;
+    margin-top: 15px;
+    font-size: 14px;
     line-height: 60px;
     color: #ff004f; /* Darker background on hover */
     border-radius: 50%;
@@ -331,6 +343,31 @@ form .btn{
     color: #e1d8d8;
 }
 
+.login-form input {
+    background: #262626 !important;  /* dark background */
+    color: #e1d8d8 !important;       /* light text */
+}
+
+
+/* Style for the "Remember Me" checkbox + text */
+form label {
+    display: inline-flex;      /* keep checkbox + text inline */
+    align-items: center;       /* vertically align */
+    gap: 6px;                  /* small gap between box & text */
+    cursor: pointer;           /* click anywhere toggles checkbox */
+    font-size: 14px;
+    color: #e1d8d8;            /* match your theme */
+    white-space: nowrap; 
+}
+
+/* remove extra spacing on checkbox itself */
+form label input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+}
+
+
+
 
 
 /* -------- Admin Panel Styles -------- */
@@ -375,12 +412,13 @@ input[type=text] {
 }
 
 button {
-    padding: 10px 20px;
+    padding: 10px 10px;
     border: none;
     border-radius: 5px;
     background: #ff004f;
     color: #e1d8d8;
     cursor: pointer;
+    font-size: 12px;
 }
 
 button:hover {
@@ -392,6 +430,21 @@ form.inline {
     flex-wrap: wrap;
     gap: 10px;
 }
+
+form.inline {
+    display: inline;
+    margin-top: 10px;
+}
+
+.logout-container {
+    width: 100%;
+    bottom: 20px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+
 
 
 
