@@ -13,3 +13,5 @@ function opentab(tabName,event) {
     console.log('Tab clicked:', tabName);
     // ...rest of your code
 }
+
+    

@@ -11,6 +11,8 @@ if (!isset($_SESSION['admin'])) {
 $conn = mysqli_connect("localhost:3307", "root", "", "portfolio_db");
 if(!$conn){ die("Connection failed: ".mysqli_connect_error()); }
 
+$messages = mysqli_query($conn, "SELECT * FROM messages ORDER BY created_at DESC");
+
 if(isset($_POST['action'])){
     $table = $_POST['table'];
     $action = $_POST['action'];
@@ -121,10 +123,42 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
 
     display_section($skills,"skills",["id","skill_name","description"]);
     display_section($experiences,"experiences",["id","job_title","company","duration"]);
-    display_section($education,"education",["id","degree","institution","year"]);
+    display_section($education,"education",["id","degree","institution","year","cgpa"]);  
     display_section($services,"services",["id","title","icon","description"]);
     display_section($projects,"projects",["id","title","description","image","link"]);
     ?>
+
+    <div class ="table-container">
+    <h2>Messages</h2>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Received At</th>
+        </tr>
+        <?php while($row = mysqli_fetch_assoc($messages)) { ?>
+        <tr>
+            <td><?php echo htmlspecialchars($row['id']); ?></td>
+            <td><?php echo htmlspecialchars($row['name']); ?></td>
+            <td><?php echo htmlspecialchars($row['email']); ?></td>
+            <td><?php echo htmlspecialchars($row['message']); ?></td>
+            <td><?php echo htmlspecialchars($row['created_at']); ?></td>
+            <td>
+            <form method="POST" class="inline">
+                <input type="hidden" name="table" value="messages">
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <input type="hidden" name="action" value="Delete">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+        </tr>
+        <?php } ?>
+    </table>
+    </div>
+
+
 
     <div class="logout-container">
     <form method="POST" action="logout.php">
@@ -132,6 +166,26 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
     </form>
 </div>
 </div>
+
+<script>
+    // Wait until DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        // Save scroll position before submitting any form
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', () => {
+                localStorage.setItem('scrollPos', window.scrollY);
+            });
+        });
+
+        // Restore scroll position on page load
+        const scrollPos = localStorage.getItem('scrollPos');
+        if(scrollPos) {
+            window.scrollTo(0, scrollPos);
+            localStorage.removeItem('scrollPos'); // remove after restoring
+        }
+    });
+</script>
 
 
 </body>

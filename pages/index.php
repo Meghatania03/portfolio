@@ -28,7 +28,7 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
 <body>
     <div id="header">
         <div class="container">
-            <nav><span class="portfolio-title">megha's portfolio</span>
+            <nav><span class="portfolio-title">Megha Tania</span>
                 <ul>
                     <li><a href="#header">Home</a></li>
                     <li><a href="#about">About</a></li>
@@ -99,7 +99,7 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
                                     <i class="<?php echo $row['icon']; ?>"></i>
                                     <h2><?php echo $row['title']; ?></h2>
                                     <p><?php echo $row['description']; ?></p>
-                                    <a href="#">Learn More</a>
+                                    <!<a href="#">Learn More</a>>
                                 </div>
                             <?php } ?>
                         </div>
@@ -135,7 +135,7 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
                                 <p><i class="fa-solid fa-phone"></i>+880 1234567890</p>
                             </div>
                             <div class="contact-right">
-                                <form>
+                                <form action="submit_message.php" method="POST">
                                     <input type="text" name="name" placeholder="Your Name" required>
                                     <input type="email" name="email" placeholder="Your Email" required>
                                     <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
