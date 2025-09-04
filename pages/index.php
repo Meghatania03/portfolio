@@ -46,7 +46,7 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
                         </div>
                         <div class="about-col-2">
                             <h1 class="about_me">About Me</h1>
-                            <p>Hi, I'm Megha, a passionate web developer with a love for creating beautiful and functional websites. I specialize in front-end development, crafting user-friendly interfaces that enhance the user experience.</p>
+                            <p>Hi, I'm Megha, a web and software developer studying CSE at KUET. I’m skilled in C, C++, Java, HTML, CSS, JavaScript, with experience in backend development and UI/UX design. I enjoy building projects that solve problems and create engaging user experiences.</p>
                             <div class=tab-titles>
                                 <p class="tab-links active-link" onclick="opentab('skills',event)">Skills</p>
                                 <p class="tab-links" onclick="opentab('experience',event)">Experience</p>
@@ -99,7 +99,7 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
                                     <i class="<?php echo $row['icon']; ?>"></i>
                                     <h2><?php echo $row['title']; ?></h2>
                                     <p><?php echo $row['description']; ?></p>
-                                    <!<a href="#">Learn More</a>>
+                                
                                 </div>
                             <?php } ?>
                         </div>

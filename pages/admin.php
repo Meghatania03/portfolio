@@ -84,14 +84,14 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
 
         foreach($columns as $col){
             if($col == 'id'){
-                echo "<td>".$row[$col]."</td>"; // id not editable
+                echo "<td>".$row[$col]."</td>"; 
             } else {
-                // Editable inputs in each cell
+               
                 echo "<td><input type='text' name='data[$col]' value='".$row[$col]."' required></td>";
             }
         }
 
-        // Action column: Update + Delete
+        
         echo "<td>
                 <button type='submit' name='action' value='Update'>Update</button>
               </form>
@@ -168,9 +168,9 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
 </div>
 
 <script>
-    // Wait until DOM is loaded
+   
     document.addEventListener('DOMContentLoaded', () => {
-        // Save scroll position before submitting any form
+       
         const forms = document.querySelectorAll('form');
         forms.forEach(form => {
             form.addEventListener('submit', () => {
@@ -178,11 +178,11 @@ $projects = mysqli_query($conn, "SELECT * FROM projects");
             });
         });
 
-        // Restore scroll position on page load
+       
         const scrollPos = localStorage.getItem('scrollPos');
         if(scrollPos) {
             window.scrollTo(0, scrollPos);
-            localStorage.removeItem('scrollPos'); // remove after restoring
+            localStorage.removeItem('scrollPos');
         }
     });
 </script>
